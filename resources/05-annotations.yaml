@@ -8,7 +8,8 @@ metadata:
   annotations:
     imageRegistry: registry.dockerhub.com
     buildUrl: https://jenkins.dev.com/build/7
-# spec:
-#   containers:
-#     - name: nginx
-#       image: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      
