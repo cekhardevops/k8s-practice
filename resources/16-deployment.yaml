@@ -10,10 +10,11 @@ metadata:
 spec:
   replicas: 3
   selector:
-    project: digital
-    repo: platform
-    environment: dev
-    app: nginx
+    matchLabels:
+      project: digital
+      repo: platform
+      environment: dev
+      app: nginx
   template:
     metadata:
         project: digital
