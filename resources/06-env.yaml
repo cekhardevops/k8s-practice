@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env
+  labels:
+    environment: dev
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      environment:
+        - key: course
+          value: devops
+        - key: trainer
+          value: siva
+        - key: duration 
+          value: 120 hrs
+
+# what is difference between keep the env var in dockerfile and keep the env var in manifest
+# if env var is kept in docker file, if there is any change, we need to rebuild the image 
+# but incase of manifest, jsut restart is enough to reflect the changes
