@@ -38,7 +38,7 @@ metadata:
     environment: dev
     app: frontend
 spec:
-  # type: LoadBalancer
+  type: NodePort
   selector:
     project: digital
     environment: dev
