@@ -8,7 +8,7 @@ spec:
   containers:
     - name: nginx
       image: nginx
-      environment:
+      env:
         - key: course
           value: devops
         - key: trainer
