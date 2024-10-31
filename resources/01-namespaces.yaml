@@ -5,3 +5,9 @@ metadata:
   labels:
     project: expense
     environment: dev
+
+# The Namespace "Namespace" is invalid: metadata.name: Invalid value: "Namespace": a lowercase RFC 1123 label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?')
+
+# error: resource mapping not found for name: "expense" namespace: "" from "01-namespaces.yaml": no matches for kind "NameSpace" in version "v1" ensure CRDs are installed first
+
+#error: unable to decode "01-namespaces.yaml": json: cannot unmarshal number into Go struct field ObjectMeta.metadata.name of type string
