@@ -9,11 +9,11 @@ spec:
     - name: nginx
       image: nginx
       env:
-        - key: course
+        - name: course
           value: devops
-        - key: trainer
+        - name: trainer
           value: siva
-        - key: duration 
+        - name: duration 
           value: 120 hrs
 
 # what is difference between keep the env var in dockerfile and keep the env var in manifest
