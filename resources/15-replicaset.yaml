@@ -25,7 +25,9 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:alpine-slim
+          image: nginx:alpine-slim  
+          
+# replicaset cant update image version. its only responsibility is maintain required no of conatiners in running state
 
 ---
 

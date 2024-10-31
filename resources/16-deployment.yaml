@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    project: digital
+    repo: platform
+    environment: dev
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    project: digital
+    repo: platform
+    environment: dev
+    app: nginx
+  template:
+    metadata:
+        project: digital
+        repo: platform
+        environment: dev
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: nginx-rs
+spec:
+  selector:
+    project: digital
+    repo: platform
+    environment: dev
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
