@@ -17,10 +17,10 @@ spec:
       app: nginx
   template:
     metadata:
-        project: digital
-        repo: platform
-        environment: dev
-        app: nginx
+      project: digital
+      repo: platform
+      environment: dev
+      app: nginx
     spec:
       containers:
         - name: nginx
