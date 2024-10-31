@@ -26,3 +26,25 @@ spec:
       containers:
         - name: nginx
           image: nginx
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  labels:
+    project: digital
+    environment: dev
+    app: frontend
+spec:
+  # type: LoadBalancer
+  selector:
+    project: digital
+    environment: dev
+    tier: frontend
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32007
