@@ -17,12 +17,11 @@ spec:
       app: nginx
   template:
     metadata:
-      selector:
-        labels:
-          project: digital
-          repo: platform
-          environment: dev
-          app: nginx
+      labels:
+        project: digital
+        repo: platform
+        environment: dev
+        app: nginx
     spec:
       containers:
         - name: nginx
