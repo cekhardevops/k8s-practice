@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debugPod
+  namespace: expense
+spec:
+  containers:
+    - name: debugPod
+      image: cekharch/debug:v1
