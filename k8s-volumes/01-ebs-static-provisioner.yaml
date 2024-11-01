@@ -22,6 +22,8 @@ spec:
   #               - us-east-2c
 ---
 
+#AttachVolume.Attach failed for volume "ebs-static-provisioner" : rpc error: code = Internal desc = Could not attach volume "vol-0b0b0385cd93a316e" to node "i-02dd866e04295e47b": could not attach volume "vol-0b0b0385cd93a316e" to node "i-02dd866e04295e47b": operation error EC2: AttachVolume, https response error StatusCode: 400, RequestID: 160d2ea5-ae31-4aa3-8925-31b700ba50ca, api error InvalidVolume.ZoneMismatch: The volume 'vol-0b0b0385cd93a316e' is not in the same availability zone as instance 'i-02dd866e04295e47b'
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -40,6 +42,8 @@ kind: Pod
 metadata:
   name: nginx-pvc
 spec:
+  nodeSelector: 
+    topology.kubernetes.io/zone: us-east-1f
   containers:
   - name: nginx-pv
     image: nginx
@@ -50,3 +54,4 @@ spec:
   - name: persistent-storage
     persistentVolumeClaim:
       claimName: ebs-claim
+  
