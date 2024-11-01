@@ -31,7 +31,7 @@ spec:
   volumes:
     - name: pvc-ebs-dynamic
       persistentVolumeClaim:
-      claimName: ebs-cliam-dynamic
+        claimName: ebs-cliam-dynamic
 
 ---
 apiVersion: v1
