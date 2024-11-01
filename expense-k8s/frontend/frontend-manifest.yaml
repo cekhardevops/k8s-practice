@@ -16,9 +16,10 @@ spec:
       app: frontend
   template:
     metadata:
-      project: expense
-      environment: dev
-      app: frontend
+      labels:
+        project: expense
+        environment: dev
+        app: frontend
     spec:
       containers:
         - name: frontend
