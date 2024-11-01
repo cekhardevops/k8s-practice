@@ -8,7 +8,7 @@ spec:
   storageClassName: "expense-ebs"
   resources:
     requests:
-      storage: 5Gi
+      storage: 3Gi
   # volumeName: "expense-ebs"
   
 ---
