@@ -28,8 +28,6 @@ In Kubernetes on AWS, EBS (Elastic Block Store) and EFS (Elastic File System) ar
 
 Limitation: If a pod needs to move to another node (say, in a failover), the EBS volume has to detach and reattach, which takes a bit of time.
 
-**steps to create EBS volume, Persistent Volume (PV) and Persistent Volume Claim (PVC)**
-
 There are two ways PVs may be provisioned: 
 statically or dynamically.
 
