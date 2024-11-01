@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: ebs-static-provisioner
 spec:
+  persistentVolumeReclaimPolicy: Retain
   accessModes:
   - ReadWriteOnce
   capacity:
@@ -19,3 +20,17 @@ spec:
   #             operator: In
   #             values:
   #               - us-east-2c
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-claim
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: ebs-static-provisioner
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
