@@ -1,0 +1,67 @@
+# create storage class
+
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: expense-efs
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-041f0baf0641ad5f5 # unlike ebs, we have to configure efs filesystemid. k8s doesnt create filesystem automatically but it creates accesspoints/mountpoints dynamically for each service 
+  directoryPerms: "700"
+  # gidRangeStart: "1000" # optional
+  # gidRangeEnd: "2000" # optional
+  basePath: "/expense" # optional
+  # subPathPattern: "${.PVC.namespace}/${.PVC.name}" # optional
+  # ensureUniqueDirectory: "true" # optional
+  # reuseAccessPoint: "false" # optional
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-cliam-dynamic
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "expense-efs"
+  resources:
+    requests:
+      storage: 3Gi
+  # volumeName: "expense-ebs"
+  
+---
+
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: nginx-efs-dynamic
+  labels:
+    purpose: efs-dynamic
+spec:
+  # nodeSelector: 
+  #   topology.kubernetes.io/zone: us-east-1f
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: pvc-efs-dynamic
+          mountPath: /usr/share/nginx/html
+  volumes:
+    - name: pvc-efs-dynamic
+      persistentVolumeClaim:
+        claimName: efs-cliam-dynamic
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: efs-dynamic
+spec:
+  selector:
+    purpose: efs-dynamic
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
