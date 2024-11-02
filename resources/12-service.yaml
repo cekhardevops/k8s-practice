@@ -15,3 +15,5 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+
+# CusterIP is default type, it is useful for pod to pod communication

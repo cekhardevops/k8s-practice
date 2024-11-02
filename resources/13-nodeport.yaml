@@ -14,5 +14,5 @@ spec:
       protocol: TCP
       nodePort: 32007 
       
-# if we dont specify, k8s will assign random port in between the range 32000 - 32767.
+# if we dont specify node port, k8s will assign random port in between the range 32000 - 32767.
 # for this to work
