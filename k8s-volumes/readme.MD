@@ -41,7 +41,7 @@ statically or dynamically.
 
 * install EBS CSI driver
 
-* Cluster must have access to EBS service.
+* Cluster IAM Role must have access to EBS service.
 
 * Create a K8S PersistentVolume resource by specifying the EBS volume ID of the volume created in the previous step. PV now points to external volume created out side the cluster.
 
